@@ -1,0 +1,15 @@
+*.log
+*.ini
+*.pdf
+*.txt
+*.pptx
+*.mp4
+*.webm
+*.url
+*.7z
+*.zip
+*.url
+	
+Additional_Material/
+AMR/
+.vscode/
