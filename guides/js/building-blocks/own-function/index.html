@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Function start</title>
+  <style>
+    .msgBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 242px;
+      background: #eee;
+      transform: translate(-50%, -50%);
+    }
+
+    .msgBox p {
+      padding: 10px 20px;
+      padding-left: 82px;
+      font-size: 18px;
+      line-height: 1.5;
+      /* color: #333; */
+      color: white;
+      background-position: 25px center;
+      background-repeat: no-repeat;
+    }
+
+    .msgBox button {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      border: none;
+      font-size: 1.5rem;
+      /* color: #aaa; */
+      color: white;
+      background: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button>Display message box</button>
+
+  <script>
+    const btn = document.querySelector("button");
+
+    // btn.addEventListener("click", displayMessage); // функция displayMessage - указана без () скобок.. почему/для чего?
+    btn.addEventListener("click", () =>
+      displayMessage("Your inbox is almost full — delete some mails", "warning")
+      // displayMessage("Brian: Hi there, how are you today?", "chat")
+    );
+
+    // function displayMessage() {
+    function displayMessage(msgText, msgType) {
+      const body = document.body;
+
+      const panel = document.createElement("div");
+      panel.setAttribute("class", "msgBox");
+      body.appendChild(panel);
+
+      const msg = document.createElement("p");
+      // msg.textContent = "This is a message box";
+      msg.textContent = msgText;
+      panel.appendChild(msg);
+
+      const closeBtn = document.createElement("button");
+      closeBtn.textContent = "x";
+      panel.appendChild(closeBtn);
+
+      closeBtn.addEventListener("click", () =>
+        panel.parentNode.removeChild(panel),
+      );
+
+      if (msgType === "warning") {
+        msg.style.backgroundImage = "url(icons/warning.png)";
+        panel.style.backgroundColor = "red";
+      } else if (msgType === "chat") {
+        msg.style.backgroundImage = "url(icons/chat.png)";
+        panel.style.backgroundColor = "aqua";
+      } else {
+        msg.style.paddingLeft = "20px";
+      }
+    };
+
+    // displayMessage();
+  </script>
+</body>
+
+</html>
