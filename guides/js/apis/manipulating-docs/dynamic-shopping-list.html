@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping list example</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      padding: 20px;
+      font-family: 'Roboto Mono', monospace;
+    }
+
+    h1 {
+      text-shadow: 0 1px 10px lightblue;
+    }
+
+    input {
+      height: 22px;
+    }
+
+    input:focus {
+      outline-color: lightsteelblue;
+      caret-color: green;
+    }
+
+    button {
+      border: none;
+      padding: 5px 15px;
+      font-family: inherit;
+      font-size: 13px;
+      background: lightsteelblue;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+
+    button:focus {
+      outline-color: green;
+    }
+
+    button:hover {
+      color: green;
+    }
+
+    ul {
+      padding: 0;
+      width: 190px;
+      list-style: none;
+    }
+
+    li {
+      display: flex;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    li::before {
+      content: "▪";
+      margin-right: 8px;
+    }
+
+    li span {
+      flex-wrap: wrap;
+      margin-right: 10px;
+    }
+
+    li button {
+      margin-left: auto;
+      padding: 0 10px;
+    }
+
+    li button:hover {
+      color: red;
+    }
+
+    li button:focus {
+      outline-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>My shopping list</h1>
+
+  <div>
+    <label for="item">Enter a new item:</label>
+    <input type="text" name="item" id="item">
+    <button>Add item</button>
+  </div>
+
+  <ul></ul>
+
+  <script>
+    const input = document.querySelector("input");
+    const btn = document.querySelector("button");
+    const list = document.querySelector("ul");
+
+    btn.addEventListener("click", addItemBtn); // название функции addItemBtn без скобок, что бы только по нажатию
+
+    function addItemBtn() {
+      let itemName = input.value; // получение вводимых данных в input
+      console.log(itemName);
+
+      if (input.value === "") {
+        return alert("Please, enter a item name!");
+      }
+
+      input.value = ""; // после прожатия btn замена корректного поля input на пустую строку
+
+      const itemList = document.createElement("li");
+      list.appendChild(itemList);
+
+      const spanItem = document.createElement("span");
+      spanItem.textContent = itemName;
+      itemList.appendChild(spanItem);
+
+      const btnItem = document.createElement("button");
+      btnItem.textContent = "Delete";
+      itemList.appendChild(btnItem);
+
+      btnItem.addEventListener("click", () => itemList.remove());
+
+      input.focus();
+    };
+  </script>
+</body>
+
+</html>
+
+<!-- решение от MDN -->
+<!-- <script>
+  const list = document.querySelector('ul');
+  const input = document.querySelector('input');
+  const button = document.querySelector('button');
+
+  button.addEventListener('click', () => {
+    const myItem = input.value;
+    input.value = '';
+
+    const listItem = document.createElement('li');
+    const listText = document.createElement('span');
+    const listBtn = document.createElement('button');
+
+    listItem.appendChild(listText);
+    listText.textContent = myItem;
+    listItem.appendChild(listBtn);
+    listBtn.textContent = 'Delete';
+    list.appendChild(listItem);
+
+    listBtn.addEventListener('click', () => {
+      list.removeChild(listItem);
+    });
+
+    input.focus();
+  });
+</script> -->
