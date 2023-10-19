@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Functions: Task 1</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 20px;
+    }
+
+    p {
+      margin: 0;
+      font-weight: bold;
+      font-size: 32px;
+      color: purple;
+      text-shadow: 0 1px 10px yellow;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="preview"></section>
+
+  <script>
+    const section = document.querySelector('section');
+    const para = document.createElement('p');
+    section.appendChild(para);
+
+    const namesArr = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
+
+    function chooseName() {
+      let namesArrLength = namesArr.length; // length не учитывает индексы, другая логика, т.е. не с 0 будет
+      let randomNum = Math.floor(Math.random() * namesArrLength);
+
+      para.textContent = namesArr[randomNum];
+    }
+
+    chooseName();
+  </script>
+</body>
+
+</html>
