@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object-oriented JavaScript example</title>
+</head>
+
+<body>
+  <p>This example requires you to enter commands in your browser's JavaScript console (see <a
+      href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are
+      browser developer tools</a> for more information).</p>
+
+  <script>
+    // пример объявления, последующего наполнения
+    const person = {
+      name: ["Bob", "Smith"],
+      age: 32,
+      bio: function () {
+        console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+      },
+      introduceSelf: function () {
+        console.log(`Hi! I'm ${this.name[0]}.`);
+      },
+    }
+
+    // объект в объекте, да.. пожалуйста
+    const person2 = {
+      name: {
+        first: "May",
+        last: "Smith"
+      },
+    }
+
+    // добавление свойств, методов
+    person["eyes"] = "hazel";
+    person.farewell = function () {
+      console.log("Bye everybody!");
+    };
+
+    console.log(person); // {name: Array(2), age: 32, eyes: 'hazel', bio: ƒ, introduceSelf: ƒ, …}
+  </script>
+</body>
+
+</html>
